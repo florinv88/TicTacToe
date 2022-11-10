@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 
 
 
@@ -26,13 +26,11 @@ const App = () => {
     setPlayerPick,
     startGame,
     matrix,
-    start
+    start,
+    winnerGame
   } = useContext(GameContext)
 
   const [restart, setRestart] = useState(false)
-
-
-
 
 
   return (
@@ -73,7 +71,10 @@ const App = () => {
                 return <Box
                   key={item}
                   idx={item}
-                  icon={matrix[0][item - 1] === "X" ? xMare : (matrix[0][item - 1] === "O" ? o : null)}
+                  xIcon={xMare}
+                  oIcon={o}
+
+
 
                 />
               })}
@@ -83,7 +84,11 @@ const App = () => {
                 return <Box
                   key={item}
                   idx={item}
-                  icon={matrix[1][item - 4] === "X" ? xMare : (matrix[1][item - 4] === "O" ? o : null)}
+                  xIcon={xMare}
+                  oIcon={o}
+
+
+
                 />
               })}
             </div>
@@ -92,7 +97,11 @@ const App = () => {
                 return <Box
                   key={item}
                   idx={item}
-                  icon={matrix[2][item - 7] === "X" ? xMare : (matrix[2][item - 7] === "O" ? o : null)}
+                  xIcon={xMare}
+                  oIcon={o}
+
+
+
                 />
               })}
             </div>
@@ -130,6 +139,10 @@ const App = () => {
             </div>
           </section>
         </div>
+      </div>}
+
+      {winnerGame && <div>
+        <h2>{`The winner is ${winnerGame}!`}</h2>
       </div>}
 
 
